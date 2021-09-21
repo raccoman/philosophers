@@ -68,7 +68,7 @@ void	ft_msg(t_philosopher *philo, size_t timestamp, int action);
 int		ft_log(int	error);
 size_t	get_time(void);
 void	*routine(void *vphilo);
-int		start(t_main **instance);
+int		start(t_main *instance);
 int		take_forks(t_philosopher *philo);
 int		eat(t_philosopher *philo);
 int		release_forks(t_philosopher *philo);

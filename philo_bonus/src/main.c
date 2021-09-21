@@ -21,7 +21,6 @@ int	clear(t_main *instance)
 	while (i < instance->amount)
 		kill(instance->philosophers[i++].pid, SIGKILL);
 	free(instance->philosophers);
-	printf("Killed\n");
 	return (0);
 }
 
@@ -84,4 +83,5 @@ int	main(int argc, const char **argv)
 	if (start(&instance))
 		return (1);
 	sem_wait(instance.die_sem);
+	clear(&instance);
 }

@@ -12,25 +12,25 @@
 
 #include "philosophers.h"
 
-int	start(t_main **instance)
+int	start(t_main *instance)
 {
 	size_t		i;
 	pthread_t	tid;
 
 	i = 0;
-	while (i < (*instance)->amount)
+	while (i < instance->amount)
 	{
-		(*instance)->philosophers[i].pid = fork();
-		if (!(*instance)->philosophers[i].pid)
+		instance->philosophers[i].pid = fork();
+		if (!instance->philosophers[i].pid)
 		{
-			routine(&(*instance)->philosophers[i]);
+			routine(&instance->philosophers[i]);
 			exit(0);
 		}
-		if ((*instance)->amount % 2)
+		if (instance->amount % 2)
 			ft_usleep(500);
 		i++;
 	}
-	pthread_create(&tid, NULL, wait_children, (void *)(*instance));
+	pthread_create(&tid, NULL, wait_children, (void *)instance);
 	pthread_detach(tid);
 	return (0);
 }
